@@ -1,4 +1,4 @@
-package com.example.foodapp
+package com.example.foodapp.modal
 
 import androidx.annotation.DrawableRes
 

@@ -7,7 +7,23 @@
 
     <fragment
         android:id="@+id/listFood"
-        android:name="com.example.foodapp.FoodList"
+        android:name="com.example.foodapp.view.FoodList"
         android:label="fragment_list_food"
-        tools:layout="@layout/fragment_food_list" />
+        tools:layout="@layout/fragment_food_list" >
+        <action
+            android:id="@+id/action_listFood_to_detailesF"
+            app:destination="@id/detailesF" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailesF"
+        android:name="com.example.foodapp.view.DetailesF"
+        android:label="fragment_detailes"
+        tools:layout="@layout/fragment_detailes" >
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="imageUrl"
+            app:argType="integer" />
+    </fragment>
 </navigation>

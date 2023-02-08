@@ -2,14 +2,14 @@ package com.example.foodapp
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodapp.databinding.FoodItemBinding
+import com.example.foodapp.modal.ListF
+import com.example.foodapp.modal.SharePref
 
-class FoodLisAdapter : ListAdapter<ListF, RecyclerView.ViewHolder>(DIFF_CALLBACK){
+class FoodLisAdapter(val setting : SharePref, val onItemClick:(item : ListF) -> Unit) : ListAdapter<ListF, RecyclerView.ViewHolder>(DIFF_CALLBACK){
     companion object{
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListF>() {
 
@@ -47,10 +47,11 @@ class FoodLisAdapter : ListAdapter<ListF, RecyclerView.ViewHolder>(DIFF_CALLBACK
         fun bind(item: ListF){
             itemBinding.tvName.text = item.name
             itemBinding.tvName.setTextSize(ShareP.getFontSize())
-            itemBinding.tvName.setOnClickListener {
-                Toast.makeText(it.context,"name: ${item.name}",Toast.LENGTH_LONG).show()
+            itemBinding.contenerid.setOnClickListener {
+                onItemClick(item)
             }
             itemBinding.ivAvatar.setImageResource(item.imageUrl)
         }
     }
 }
+
